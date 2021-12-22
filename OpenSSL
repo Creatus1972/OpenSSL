@@ -2,7 +2,7 @@
 $tag = "";
   $original_text = "Eredeti szöveg";
   $key = "sdsdshjkzjmnewcefdqfgdsftzunwefqwtrtzrzkhtrjzjnhbrgasehrtjdezvewae"; // Ez a kulcs bármilyen karaktereket tartalmazhat.
-  $cipher = "aes-128-gcm"; // Titkosítás típusa -> Ne módosítsd
+  $cipher = "aes-128-gcm"; // Titkosítás típusa -> 128 vagy 256
   if (in_array($cipher, openssl_get_cipher_methods())) {
       $ivlen = openssl_cipher_iv_length($cipher);
       $iv = openssl_random_pseudo_bytes($ivlen);
