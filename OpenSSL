@@ -1,0 +1,14 @@
+<?php
+$tag = "";
+  $original_text = "Eredeti szöveg";
+  $key = "sdsdshjkzjmnewcefdqfgdsftzunwefqwtrtzrzkhtrjzjnhbrgasehrtjdezvewae"; // Ez a kulcs bármilyen karaktereket tartalmazhat.
+  $cipher = "aes-128-gcm"; // Titkosítás típusa -> Ne módosítsd
+  if (in_array($cipher, openssl_get_cipher_methods())) {
+      $ivlen = openssl_cipher_iv_length($cipher);
+      $iv = openssl_random_pseudo_bytes($ivlen);
+      $encodetext = openssl_encrypt($original_text, $cipher, $key, $options=0, $iv, $tag); // Eredeti szöveg titkosítása -> A $tag eredetileg üres, de a $key - hez hasonlóan bármilyen karaktarakat tartalmazhat
+      $decodetext = openssl_decrypt($encodetext, $cipher, $key, $options=0, $iv, $tag); // Titkosított szöveg visszafejtése
+      echo $encodetext."<br>";
+      echo $decodetext."<br>";
+  }
+?>
